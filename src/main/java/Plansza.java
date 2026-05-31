@@ -1,9 +1,6 @@
-package migracje;
-
 public class Plansza {
 
     private static Plansza instance;
-    //zmienna P to nasza stworzona plansza
 
     // na razie przykładowe zmienne
     private int szerokosc;
