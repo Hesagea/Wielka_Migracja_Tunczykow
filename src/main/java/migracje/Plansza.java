@@ -5,7 +5,6 @@ public class Plansza {
     private static Plansza instance;
     //zmienna P to nasza stworzona plansza
 
-    // na razie przykładowe zmienne
     private int szerokosc;
     private int wysokosc;
 
@@ -14,6 +13,7 @@ public class Plansza {
         this.wysokosc = 100;
     }
 
+    //funkcja sprawdza czy plansza już istnieje
     public static Plansza getInstance() {
         if (instance == null) {
             instance = new Plansza();
