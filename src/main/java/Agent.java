@@ -38,7 +38,4 @@ public abstract class Agent {
     public void setStrategia(StrategiaRuchu nowaStrategia) {
         this.mojaStrategia = nowaStrategia;
     }
-
-    // (reszta kodu koleżanki, np. współrzędne, energia itd.)
-
 }

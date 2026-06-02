@@ -4,7 +4,6 @@ public class Tunczyk extends Agent {
 
 
     public Tunczyk(int id, int x, int y) {
-        // "super" przekazuje dane (id, x, y) w górę, do konstruktora Agenta
         super(id, x, y);
 
         this.mojaStrategia = new RuchLosowy();

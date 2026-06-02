@@ -23,7 +23,6 @@ public class Symulacja {
 
     public void krokSymulacji() {
 
-        // Pętla przechodząca przez wszystkie ryby w worku
         for (Tunczyk t : listaTunczykow) {
             t.krok();
         }
