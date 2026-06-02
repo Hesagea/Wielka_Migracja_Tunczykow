@@ -28,7 +28,15 @@ public class Plansza {
     //polska Hania też tu była <3
 
     public void createPlansza(){
+        for(int i=0; i< szerokosc; i++){
+            for(int j=0; j< wysokosc; j++){
+                tablicaKomorek[i][j] = new Komorka(i, j);
+            }
+        }
 
+        for(int i=0; i< wysokosc; i++){
+
+        }
     }
 
 }
