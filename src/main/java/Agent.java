@@ -29,4 +29,16 @@ public abstract class Agent {
     }
 
     public void setY(int y){ this.y = y;}
+
+
+    // zmienna trzymająca aktualny strategię
+    protected StrategiaRuchu mojaStrategia;
+
+    //pozwala podmienić strategię w dowolnym momencie
+    public void setStrategia(StrategiaRuchu nowaStrategia) {
+        this.mojaStrategia = nowaStrategia;
+    }
+
+    // (reszta kodu koleżanki, np. współrzędne, energia itd.)
+
 }
