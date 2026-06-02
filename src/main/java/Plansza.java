@@ -4,10 +4,14 @@ public class Plansza {
 
     private int szerokosc;
     private int wysokosc;
+    private Komorka[][] tablicaKomorek;
+
+
 
     private Plansza() {
         this.szerokosc = 100;
         this.wysokosc = 100;
+        this.tablicaKomorek= new Komorka[szerokosc][wysokosc];
     }
 
     //funkcja sprawdza czy plansza już istnieje
@@ -17,4 +21,14 @@ public class Plansza {
         }
         return instance;
     }
+
+    //pomocy...
+    //tu byla francuska hania
+
+    //polska Hania też tu była <3
+
+    public void createPlansza(){
+
+    }
+
 }
