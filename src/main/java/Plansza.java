@@ -12,6 +12,7 @@ public class Plansza {
         this.szerokosc = 100;
         this.wysokosc = 100;
         this.tablicaKomorek= new Komorka[szerokosc][wysokosc];
+        this.createPlansza();
     }
 
     //funkcja sprawdza czy plansza już istnieje
@@ -31,11 +32,11 @@ public class Plansza {
         for(int i=0; i< szerokosc; i++){
             for(int j=0; j< wysokosc; j++){
                 tablicaKomorek[i][j] = new Komorka(i, j);
+
+            if (i == szerokosc - 1) {
+                tablicaKomorek[i][j].setCzyTarlisko(true);
+                }
             }
-        }
-
-        for(int i=0; i< wysokosc; i++){
-
         }
     }
 

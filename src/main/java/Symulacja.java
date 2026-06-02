@@ -1,13 +1,13 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Symulacja {
 
     private static Symulacja instance;
-
-    private int simulationSeed;
-    private double globalSpeed;
+    private List<Tunczyk> listaTunczykow;
 
     private Symulacja() {
-        this.simulationSeed = 42;
-        this.globalSpeed = 1.0;
+        this.listaTunczykow = new ArrayList<>();
     }
 
     public static Symulacja getInstance() {
@@ -17,5 +17,16 @@ public class Symulacja {
         return instance;
     }
 
+    public void dodajTunczyka(Tunczyk t) {
+        listaTunczykow.add(t);
+    }
+
+    public void krokSymulacji() {
+
+        // Pętla przechodząca przez wszystkie ryby w worku
+        for (Tunczyk t : listaTunczykow) {
+            // ruszanie ryb
+        }
+    }
 
 }

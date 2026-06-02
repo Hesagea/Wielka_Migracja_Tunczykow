@@ -21,11 +21,4 @@ public class Komorka {
         this.czyTunczyk = tunczyk;
     }
 
-    public void checkX(){
-
-    }
-
-    // jakaś metoda na zmianę listy z tunczykami
-
-
 }
