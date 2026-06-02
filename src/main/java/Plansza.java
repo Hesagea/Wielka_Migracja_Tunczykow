@@ -40,4 +40,13 @@ public class Plansza {
         }
     }
 
+    // Metoda pozwalająca pobrać konkretną komórkę, upewniając się, że nie wyjdziemy poza mapę
+    public Komorka getKomorka(int x, int y) {
+        // Proste zabezpieczenie, żeby ryba nie wypłynęła poza ekran
+        int bezpieczneX = Math.max(0, Math.min(x, szerokosc - 1));
+        int bezpieczneY = Math.max(0, Math.min(y, wysokosc - 1));
+
+        return tablicaKomorek[bezpieczneX][bezpieczneY];
+    }
+
 }

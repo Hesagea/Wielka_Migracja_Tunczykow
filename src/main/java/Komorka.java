@@ -27,8 +27,15 @@ public class Komorka {
         this.pradMorski = nowyPrad;
     }
 
+    public boolean getCzyTarlisko() {
+        return this.czyTarlisko;
+    }
+
     //Tuńczyk będzie sprawdzał, jak mocno znosi go woda
     public Wektor2D getPradMorski() {
         return this.pradMorski;
     }
+
+    public int getX() { return x; }
+    public int getY() { return y; }
 }

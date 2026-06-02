@@ -25,8 +25,12 @@ public class Symulacja {
 
         // Pętla przechodząca przez wszystkie ryby w worku
         for (Tunczyk t : listaTunczykow) {
-            // ruszanie ryb
+            t.krok();
         }
+    }
+
+    public Plansza getPlansza() {
+        return Plansza.getInstance();
     }
 
 }

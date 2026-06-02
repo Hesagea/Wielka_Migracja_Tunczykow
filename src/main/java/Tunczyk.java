@@ -2,7 +2,7 @@ public class Tunczyk extends Agent {
 
     private StrategiaRuchu mojaStrategia;
 
-    // 1. Konstruktor
+
     public Tunczyk(int id, int x, int y) {
         // "super" przekazuje dane (id, x, y) w górę, do konstruktora Agenta
         super(id, x, y);
@@ -12,6 +12,11 @@ public class Tunczyk extends Agent {
 
     @Override
     public void krok() {
+        // Zanim ryba się ruszy, sprawdza, czy stoi na mecie. Jeśli tak, przerywa działanie ("return;")
+        if (Symulacja.getInstance().getPlansza().getKomorka(this.x, this.y).getCzyTarlisko()) {
+            return;
+        }
+
         Wektor2D wektor = mojaStrategia.wyliczWektorRuchu();
 
         int potencjalneX = this.x + (int) wektor.getDx();
@@ -19,10 +24,14 @@ public class Tunczyk extends Agent {
 
         Komorka bezpiecznaKomorka = Symulacja.getInstance().getPlansza().getKomorka(potencjalneX, potencjalneY);
 
-        // Przypisujemy rybie ostateczne, bezpieczne współrzędne pobrane z Torusa
         this.x = bezpiecznaKomorka.getX();
         this.y = bezpiecznaKomorka.getY();
         // zeby było cos widac
         System.out.println("Tuńczyk nr " + id + " przepłynął na nowe współrzędne: (" + this.x + ", " + this.y + ")");
+
+        // --- OGŁOSZENIE SUKCESU ---
+        if (bezpiecznaKomorka.getCzyTarlisko()) {
+            System.out.println("🐟 SUKCES! Tuńczyk nr " + id + " dotarł do Tarliska!");
+        }
     }
 }
