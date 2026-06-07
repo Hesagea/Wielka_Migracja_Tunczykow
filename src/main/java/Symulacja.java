@@ -32,4 +32,9 @@ public class Symulacja {
         return Plansza.getInstance();
     }
 
+    // Metoda do resetowania symulacji
+    public void wyczyscSymulacje() {
+        this.listaTunczykow.clear();
+    }
+
 }
