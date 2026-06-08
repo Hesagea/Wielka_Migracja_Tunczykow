@@ -6,6 +6,7 @@ public class Symulacja {
     private static Symulacja instance;
     private List<Tunczyk> listaTunczykow;
 
+    private Wektor2D pradMorski = new Wektor2D(0, 0);
     private Symulacja() {
         this.listaTunczykow = new ArrayList<>();
     }
@@ -23,7 +24,7 @@ public class Symulacja {
 
     public void krokSymulacji() {
 
-        // Pętla przechodząca przez wszystkie ryby w worku
+        // pętla przechodząca przez wszystkie ryby w worku
         for (Tunczyk t : listaTunczykow) {
             t.krok();
         }
@@ -33,4 +34,19 @@ public class Symulacja {
         return Plansza.getInstance();
     }
 
+    public List<Tunczyk> getListaTunczykow() {
+        return this.listaTunczykow;
+    }
+
+    public void wyczyscSymulacje() {
+        this.listaTunczykow.clear();
+    }
+
+    public void setPradMorski(Wektor2D prad) {
+        this.pradMorski = prad;
+    }
+
+    public Wektor2D getPradMorski() {
+        return this.pradMorski;
+    }
 }

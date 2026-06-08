@@ -33,4 +33,6 @@ public class Tunczyk extends Agent {
             System.out.println("🐟 SUKCES! Tuńczyk nr " + id + " dotarł do Tarliska!");
         }
     }
+
+
 }

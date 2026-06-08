@@ -110,6 +110,7 @@ public class AplikacjaGUI extends Application {
             Symulacja.getInstance().krokSymulacji();
             pomalujTloOceanu(pedzel);
             narysujPrad(pedzel);
+            narysujPlankton(pedzel);
             narysujRyby(pedzel);
 
         }));
@@ -219,6 +220,25 @@ public class AplikacjaGUI extends Application {
             double ogonY = kreska[1] - (wektorPradu.getDy() * 4);
 
             pedzel.strokeLine(ogonX, ogonY, kreska[0], kreska[1]);
+        }
+    }
+
+    private void narysujPlankton(javafx.scene.canvas.GraphicsContext pedzel) {
+        Plansza plansza = Symulacja.getInstance().getPlansza();
+
+        javafx.scene.image.Image obrazekPlanktonu = new javafx.scene.image.Image("file:plankton.png");
+
+        for (int x = 0; x < plansza.getSzerokosc(); x++) {
+            for (int y = 0; y < plansza.getWysokosc(); y++) {
+                Komorka k = plansza.getKomorka(x, y);
+
+                // jeśli w komórce jest plankton i nikt go jeszcze nie zjadł
+                if (k.getPlankton() != null && k.getPlankton().isCzyDostepny()) {
+                    // rysowanie plankotnu!
+                    // Parametry: (co rysujemy, pozycja X, pozycja Y, szerokość, wysokość)
+                    pedzel.drawImage(obrazekPlanktonu, x * 5, y * 5, 5, 5);
+                }
+            }
         }
     }
 }
