@@ -1,3 +1,5 @@
+import javafx.application.Application;
+
 public class Main {
     public static void main(String[] args) {
         System.out.println("--- START WIELKIEJ MIGRACJI ---");
@@ -25,9 +27,6 @@ public class Main {
         symulacja.dodajTunczyka(t1);
         symulacja.dodajTunczyka(t2);
 
-        for (int i = 1; i <= 20; i++) {
-            System.out.println("\n--- KROK SYMULACJI NR " + i + " ---");
-            symulacja.krokSymulacji();
-        }
+        Application.launch(AplikacjaGUI.class, args);
     }
 }
