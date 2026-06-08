@@ -17,12 +17,15 @@ public class AnalizatorSymulacji {
         Plansza plansza = Plansza.getInstance();
 
         this.ogolem = ryby.size();
-        this.wDrodze = ryby.stream().filter(r -> r.getStatus().equals("W_DRODZE")).count();
-        this.sukcesy = ryby.stream().filter(r -> r.getStatus().equals("U_CELU")).count();
-        this.padniete = ryby.stream().filter(r -> r.getStatus().equals("PADL")).count();
+
+        // POPRAWIONE STRUMIENIE: Dodaliśmy jawne rzutowanie (Tunczyk r) w lambdzie,
+        // aby kompilator miał 100% pewności, że wywołuje metodę z klasy Tunczyk!
+        this.wDrodze = ryby.stream().filter((Tunczyk r) -> r.getStatus().equals("W_DRODZE")).count();
+        this.sukcesy = ryby.stream().filter((Tunczyk r) -> r.getStatus().equals("U_CELU")).count();
+        this.padniete = ryby.stream().filter((Tunczyk r) -> r.getStatus().equals("PADL")).count();
 
         this.sredniaEnergia = ryby.stream()
-                .filter(r -> r.getStatus().equals("W_DRODZE"))
+                .filter((Tunczyk r) -> r.getStatus().equals("W_DRODZE"))
                 .mapToDouble(Tunczyk::getEnergia)
                 .average()
                 .orElse(0.0);
@@ -50,9 +53,7 @@ public class AnalizatorSymulacji {
                 ? ((double) (this.wDrodze + this.sukcesy) / this.ogolem) * 100 : 0.0;
     }
 
-    // wyswietlania
-
-
+    // Wyświetlanie - Gettery dla silnika graficznego GUI
     public int getOgolem() { return ogolem; }
     public long getwDrodze() { return wDrodze; }
     public long getSukcesy() { return sukcesy; }

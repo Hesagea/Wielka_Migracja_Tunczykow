@@ -4,14 +4,26 @@ public abstract class Agent {
     protected int id;
     protected int x;
     protected int y;
+    protected double energia;
+    protected String status = "W_DRODZE";
 
     public Agent(int id, int x, int y){
         this.id = id;
         this.x = x;
         this.y = y;
+        this.energia = 50.0;
     }
     // metoda abstrakcyjna
     public abstract void krok();
+
+    public String getStatus() {
+        return this.status;
+    }
+
+    public double getEnergia() {
+        return this.energia;
+    }
+
     public int getId(){
         return id;
     }
@@ -39,6 +51,6 @@ public abstract class Agent {
         this.mojaStrategia = nowaStrategia;
     }
 
-    // (reszta kodu koleżanki, np. współrzędne, energia itd.)
+
 
 }

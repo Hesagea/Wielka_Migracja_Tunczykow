@@ -5,8 +5,8 @@ public class Symulacja {
 
     private static Symulacja instance;
     private List<Tunczyk> listaTunczykow;
-
     private Wektor2D pradMorski = new Wektor2D(0, 0);
+
     private Symulacja() {
         this.listaTunczykow = new ArrayList<>();
     }
@@ -23,30 +23,26 @@ public class Symulacja {
     }
 
     public void krokSymulacji() {
-
-        // pętla przechodząca przez wszystkie ryby w worku
+        // 1. Krok dla wszystkich ryb
         for (Tunczyk t : listaTunczykow) {
             t.krok();
         }
+
+        // 2. 👑 Krok regeneracji dla planktonu rozsianego na planszy!
+        Plansza plansza = getPlansza();
+        for (int x = 0; x < plansza.getSzerokosc(); x++) {
+            for (int y = 0; y < plansza.getWysokosc(); y++) {
+                Komorka k = plansza.getKomorka(x, y);
+                if (k.getPlankton() != null) {
+                    k.getPlankton().krok(); // Uruchamia licznik odnawiania krzaczka
+                }
+            }
+        }
     }
 
-    public Plansza getPlansza() {
-        return Plansza.getInstance();
-    }
-
-    public List<Tunczyk> getListaTunczykow() {
-        return this.listaTunczykow;
-    }
-
-    public void wyczyscSymulacje() {
-        this.listaTunczykow.clear();
-    }
-
-    public void setPradMorski(Wektor2D prad) {
-        this.pradMorski = prad;
-    }
-
-    public Wektor2D getPradMorski() {
-        return this.pradMorski;
-    }
+    public Plansza getPlansza() { return Plansza.getInstance(); }
+    public List<Tunczyk> getListaTunczykow() { return this.listaTunczykow; }
+    public void wyczyscSymulacje() { this.listaTunczykow.clear(); }
+    public void setPradMorski(Wektor2D prad) { this.pradMorski = prad; }
+    public Wektor2D getPradMorski() { return this.pradMorski; }
 }
