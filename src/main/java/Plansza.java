@@ -29,12 +29,13 @@ public class Plansza {
     //polska Hania też tu była <3
 
     public void createPlansza(){
-        for(int i=0; i< szerokosc; i++){
-            for(int j=0; j< wysokosc; j++){
+        for(int i = 0; i < szerokosc; i++){
+            for(int j = 0; j < wysokosc; j++){
                 tablicaKomorek[i][j] = new Komorka(i, j);
 
-            if (i == szerokosc - 1) {
-                tablicaKomorek[i][j].setCzyTarlisko(true);
+                // ZMIANA: Tarlisko zajmuje teraz 4 ostatnie kolumny (indeksy 96, 97, 98, 99)
+                if (i >= szerokosc - 4) {
+                    tablicaKomorek[i][j].setCzyTarlisko(true);
                 }
             }
         }

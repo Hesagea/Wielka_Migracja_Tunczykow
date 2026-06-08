@@ -18,7 +18,7 @@ public class FabrykaOceanu {
         int idPlanktonu = 1;
         // parametry odżywcze jedzenia (możesz je dowolnie zmieniać!)
         int zasobnoscJedzenia = 30; // ile energii daje zjedzenie
-        int czasOdnawiania = 50;    // po ilu turach od zjedzenia odrasta
+        int czasOdnawiania = 10;    // po ilu turach od zjedzenia odrasta
 
         for (int x = 0; x < plansza.getSzerokosc(); x++) {
             for (int y = 0; y < plansza.getWysokosc(); y++) {

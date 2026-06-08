@@ -27,6 +27,19 @@ public class Tunczyk extends Agent {
         int potencjalneX = this.x + (int) wektor.getDx() + (int) prad.getDx();
         int potencjalneY = this.y + (int) wektor.getDy() + (int) prad.getDy();
 
+        // ==========================================
+        // NOWOŚĆ: ODBIJANIE OD GÓRY I DOŁU EKRANU
+        // ==========================================
+        // Skoro ryba potrzebuje 4 kratek zapasu w dół (na swój obrazek 24px),
+        // nie może wypłynąć niżej niż indeks 96.
+        if (potencjalneY > 97) {
+            potencjalneY = 97;
+        }
+        // Zabezpieczenie przed wypłynięciem poza górę ekranu
+        if (potencjalneY < 0) {
+            potencjalneY = 0;
+        }
+
         // 5. Pobranie bezpiecznej komórki z planszy
         Komorka bezpiecznaKomorka = Symulacja.getInstance().getPlansza().getKomorka(potencjalneX, potencjalneY);
 

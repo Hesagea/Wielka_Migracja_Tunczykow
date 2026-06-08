@@ -6,10 +6,9 @@ public class RuchLosowy implements StrategiaRuchu {
 
     @Override
     public Wektor2D wyliczWektorRuchu() {
-        // Losowy wektor dx od 5 do 10 (zawsze do przodu ku tarlisku)
-        double dx = random.nextInt(6) + 5;
-        // Losowy wektor dy od -5 do 5 (zygzak góra/dół)
-        double dy = random.nextInt(11) - 5;
+        double dx = random.nextInt(4) + 1;
+
+        double dy = random.nextInt(8) - 2;
 
         return new Wektor2D(dx, dy);
     }

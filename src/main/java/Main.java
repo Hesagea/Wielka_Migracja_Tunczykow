@@ -19,14 +19,6 @@ public class Main {
         plansza.getKomorka(5, 10).setPlankton(p1);
         plansza.getKomorka(10, 50).setPlankton(p2);
 
-        // tworzymy dwie ryby
-        Tunczyk t1 = new Tunczyk(1, 0, 10);
-        Tunczyk t2 = new Tunczyk(2, 0, 50);
-
-        // wrzucamy do symulacji
-        symulacja.dodajTunczyka(t1);
-        symulacja.dodajTunczyka(t2);
-
         Application.launch(AplikacjaGUI.class, args);
     }
 }
