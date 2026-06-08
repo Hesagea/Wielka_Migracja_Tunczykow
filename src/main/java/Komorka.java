@@ -6,6 +6,7 @@ public class Komorka {
     private Wektor2D pradMorski;
     //zakładamy, ze może byc tylko jeden tunczyk na jednej komorce
 
+    private Plankton plankton; // obiekt
     public Komorka(int x, int y){
         this.czyTarlisko=false;
         this.czyTunczyk =false;
@@ -38,4 +39,13 @@ public class Komorka {
 
     public int getX() { return x; }
     public int getY() { return y; }
+
+
+    public Plankton getPlankton(){
+        return this.plankton;
+    }
+
+    public void setPlankton(Plankton plankton){
+        this.plankton = plankton;
+    }
 }

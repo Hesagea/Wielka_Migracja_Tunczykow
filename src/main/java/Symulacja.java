@@ -33,4 +33,6 @@ public class Symulacja {
         return Plansza.getInstance();
     }
 
+    public List<Tunczyk> getListaTunczykow() {
+    }
 }

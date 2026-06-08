@@ -48,5 +48,13 @@ public class Plansza {
 
         return tablicaKomorek[bezpieczneX][bezpieczneY];
     }
+    //aby inne klasy znały rozmiar oceanu
+    public int getSzerokosc() {
+        return this.szerokosc;
+    }
+
+    public int getWysokosc() {
+        return this.wysokosc;
+    }
 
 }
