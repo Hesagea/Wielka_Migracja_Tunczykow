@@ -23,18 +23,18 @@ public class Symulacja {
     }
 
     public void krokSymulacji() {
-        // 1. Krok dla wszystkich ryb
+        // Krok dla wszystkich ryb
         for (Tunczyk t : listaTunczykow) {
             t.krok();
         }
 
-        // 2. 👑 Krok regeneracji dla planktonu rozsianego na planszy!
+        // 👑 Krok regeneracji dla planktonu rozsianego na planszy!
         Plansza plansza = getPlansza();
         for (int x = 0; x < plansza.getSzerokosc(); x++) {
             for (int y = 0; y < plansza.getWysokosc(); y++) {
                 Komorka k = plansza.getKomorka(x, y);
                 if (k.getPlankton() != null) {
-                    k.getPlankton().krok(); // Uruchamia licznik odnawiania krzaczka
+                    k.getPlankton().krok(); // uruchamia licznik odnawiania krzaczka
                 }
             }
         }

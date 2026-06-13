@@ -33,7 +33,6 @@ public class Plansza {
             for(int j = 0; j < wysokosc; j++){
                 tablicaKomorek[i][j] = new Komorka(i, j);
 
-                // ZMIANA: Tarlisko zajmuje teraz 4 ostatnie kolumny (indeksy 96, 97, 98, 99)
                 if (i >= szerokosc - 4) {
                     tablicaKomorek[i][j].setCzyTarlisko(true);
                 }
@@ -41,9 +40,9 @@ public class Plansza {
         }
     }
 
-    // Metoda pozwalająca pobrać konkretną komórkę, upewniając się, że nie wyjdziemy poza mapę
+    // metoda pozwalająca pobrać konkretną komórkę, upewniając się, że nie wyjdziemy poza mapę
     public Komorka getKomorka(int x, int y) {
-        // Proste zabezpieczenie, żeby ryba nie wypłynęła poza ekran
+        // proste zabezpieczenie, żeby ryba nie wypłynęła poza ekran
         int bezpieczneX = Math.max(0, Math.min(x, szerokosc - 1));
         int bezpieczneY = Math.max(0, Math.min(y, wysokosc - 1));
 

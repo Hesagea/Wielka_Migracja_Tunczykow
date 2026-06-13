@@ -18,10 +18,10 @@ import javafx.util.Duration;
 
 public class AplikacjaGUI extends Application {
 
-    // Lista przechowująca współrzędne (X i Y) wizualnych kresek prądu
+    // lista przechowująca współrzędne (X i Y) wizualnych kresek prądu
     private java.util.List<double[]> wizualizacjePradu = new java.util.ArrayList<>();
 
-    // Ładujemy obrazki tylko RAZ, bezpośrednio do pamięci
+    // ładowanie obrazków tylko RAZ, bezpośrednio do pamięci
     private javafx.scene.image.Image obrazekTunczyka = new javafx.scene.image.Image("file:tunczyk.png");
     private javafx.scene.image.Image obrazekMartwego = new javafx.scene.image.Image("file:tunczyk_czarny.png");
     private javafx.scene.image.Image obrazekZlotego = new javafx.scene.image.Image("file:tunczyk_zloty.png");
@@ -84,9 +84,6 @@ public class AplikacjaGUI extends Application {
         kafelekPrad.getChildren().addAll(tytulPrad, liniaWektora);
 
         // Element 4: Statystyki
-        // ==========================================
-        // KAFELEK STATYSTYK Z WYKRESEM KOŁOWYM
-        // ==========================================
         VBox kafelekStatystyki = new VBox(8);
         kafelekStatystyki.setStyle(stylKafelka);
 
@@ -95,17 +92,17 @@ public class AplikacjaGUI extends Application {
         Label statPrzezycie = new Label("Przeżywalność: 0.0%");
         statPrzezycie.setStyle("-fx-font-weight: bold; -fx-text-fill: darkgreen; -fx-font-size: 14px;");
 
-        // Tworzymy "kawałki pizzy" (dane dla wykresu)
+        // "kawałki pizzy" (dane dla wykresu)
         javafx.scene.chart.PieChart.Data daneWDrodze = new javafx.scene.chart.PieChart.Data("W drodze", 1); // 1 na start, by wykres miał kształt
         javafx.scene.chart.PieChart.Data daneUCelu = new javafx.scene.chart.PieChart.Data("U celu", 0);
         javafx.scene.chart.PieChart.Data danePadly = new javafx.scene.chart.PieChart.Data("Padły", 0);
 
-        // Składamy wykres
+        // składanie wykresu
         javafx.scene.chart.PieChart wykresKolowy = new javafx.scene.chart.PieChart(
                 javafx.collections.FXCollections.observableArrayList(daneWDrodze, daneUCelu, danePadly)
         );
-        wykresKolowy.setPrefHeight(200); // Ograniczamy wysokość, by ładnie leżał w menu
-        wykresKolowy.setLegendVisible(false); // Wyłączamy legendę (nazwy będą bezpośrednio na kawałkach)
+        wykresKolowy.setPrefHeight(200); // ograniczenie wysokości, by ładnie leżał w menu
+        wykresKolowy.setLegendVisible(false); // wyłączenie legendy (nazwy będą bezpośrednio na kawałkach)
         wykresKolowy.setLabelsVisible(true);
 
         kafelekStatystyki.getChildren().addAll(tytulStatystyki, statPrzezycie, wykresKolowy);
@@ -139,7 +136,7 @@ public class AplikacjaGUI extends Application {
         // ==========================================
         // ZEGAR SYMULACJI (METRONOM) Z FUNKCJĄ AUTO-STOPU
         // ==========================================
-        Timeline zegarSymulacji = new Timeline(); // Najpierw tworzymy pusty zegar
+        Timeline zegarSymulacji = new Timeline(); // pusty zegar
 
         KeyFrame klatka = new KeyFrame(Duration.millis(200), zdarzenie -> {
             Symulacja.getInstance().krokSymulacji();
@@ -149,24 +146,22 @@ public class AplikacjaGUI extends Application {
             narysujPlankton(pedzel);
             narysujRyby(pedzel);
 
-            analizator.generujRaportKroku(1); // Uruchamiamy obliczenia Hani
+            analizator.generujRaportKroku(1);
 
-            // Zostawiamy tekstowy procent, bo to główny wskaźnik
+            // zostawienie tekstowehgo procentu, bo to główny wskaźnik
             statPrzezycie.setText(String.format("Przeżywalność: %.1f%%", analizator.getProcentPrzezywalnosci()));
 
-            // POMPUJEMY DANE DO WYKRESU! JavaFX sam zajmie się animacją kawałków
+            // animacją kawałków wykresu
             daneWDrodze.setPieValue(analizator.getwDrodze());
             daneUCelu.setPieValue(analizator.getSukcesy());
             danePadly.setPieValue(analizator.getPadniete());
 
-            // POMPUJEMY DANE DO WYKRESU I AKTUALIZUJEMY ETYKIETY!
             long wDrodze = analizator.getwDrodze();
             long uCelu = analizator.getSukcesy();
             long padly = analizator.getPadniete();
 
-            // Zmiana wielkości kawałka
             daneWDrodze.setPieValue(wDrodze);
-            // Zmiana napisu na kawałku (np. "W drodze: 42")
+            // zmiana napisu na kawałku (np. "W drodze: 42")
             daneWDrodze.setName("W drodze: " + wDrodze);
 
             daneUCelu.setPieValue(uCelu);
@@ -175,22 +170,22 @@ public class AplikacjaGUI extends Application {
             danePadly.setPieValue(padly);
             danePadly.setName("Padły: " + padly);
 
-            // === NOWOŚĆ: SPRAWDZANIE WARUNKU KOŃCA ===
+            // SPRAWDZANIE WARUNKU KOŃCA
             boolean czyKtosJeszczePlynie = false;
             java.util.List<Tunczyk> ryby = Symulacja.getInstance().getListaTunczykow();
 
             for (Tunczyk t : ryby) {
                 if (t.getStatus().equals("W_DRODZE")) {
                     czyKtosJeszczePlynie = true;
-                    break; // Jeśli chociaż jedna ryba płynie, nie musimy sprawdzać reszty
+                    break; // jeśli chociaż jedna ryba płynie, nie trzeba sprawdzać reszty
                 }
             }
 
-            // Jeśli nikt już nie płynie (a lista ryb nie jest pusta, żeby nie zakończyć przed startem)
+            // jeśli nikt już nie płynie (a lista ryb nie jest pusta, żeby nie zakończyć przed startem)
             if (!czyKtosJeszczePlynie && !ryby.isEmpty()) {
-                zegarSymulacji.stop(); // Zatrzymujemy czas!
+                zegarSymulacji.stop(); // zatrzymanie czasu!
                 System.out.println("🏁 KONIEC SYMULACJI! Wszystkie ryby są na mecie lub padły.");
-                przyciskStart.setText("ZAKOŃCZONO (Powtórz)"); // Zmieniamy napis na przycisku
+                przyciskStart.setText("ZAKOŃCZONO (Powtórz)"); // zmiana napisu na przycisku
                 przyciskStart.setStyle("-fx-background-color: #2E8B57; -fx-text-fill: white; -fx-font-weight: bold;-fx-font-size: 18px;-fx-font-family: 'Verdana';"); // Zmieniamy kolor na zielony sukces
             }
         });
@@ -214,7 +209,7 @@ public class AplikacjaGUI extends Application {
                 wizualizacjePradu.clear();
                 java.util.Random losowaczPradu = new java.util.Random();
                 for (int i = 0; i < 30; i++) {
-                    // Losowanie kresek prądu do granicy 600px
+                    // losowanie kresek prądu do granicy 600px
                     wizualizacjePradu.add(new double[]{losowaczPradu.nextDouble() * 600, losowaczPradu.nextDouble() * 600});
                 }
 
@@ -226,7 +221,7 @@ public class AplikacjaGUI extends Application {
             }
         });
 
-        // Zmniejszone całe okno, by nie wychodziło za ekran (1000x650)
+        // zmniejszone całe okno, by nie wychodziło za ekran (1000x650)
         Scene scena = new Scene(glownyUklad, 1000, 650);
         glowneOkno.setTitle("Wielka Migracja Tuńczyków");
         glowneOkno.setScene(scena);
@@ -237,11 +232,11 @@ public class AplikacjaGUI extends Application {
         pedzel.setFill(Color.web("#1CA3EC"));
         pedzel.fillRect(0, 0, 600, 600);
 
-        // ZMIANA: Tarlisko jest teraz szerokie na 24 piksele i idealnie pomieści rybę!
+        // Tarlisko
         pedzel.setFill(Color.web("#2E8B57", 0.6));
         pedzel.fillRect(576, 0, 24, 600);
 
-        // Siatka co 6 pikseli
+        // siatka co 6 pikseli
         pedzel.setStroke(Color.web("#ffffff", 0.2));
         pedzel.setLineWidth(0.5);
 
@@ -259,12 +254,12 @@ public class AplikacjaGUI extends Application {
             int pikselX = t.getX() * 6;
             int pikselY = t.getY() * 6;
 
-            // Trzy stany do wyboru:
+            // trzy stany do wyboru:
             if (t.getStatus().equals("PADL")) {
                 pedzel.drawImage(obrazekMartwego, pikselX, pikselY, 24, 24);
 
             } else if (t.getStatus().equals("U_CELU")) {
-                // Rysujemy dumnego, złotego tuńczyka na mecie!
+                // rysowanie dumnego, złotego tuńczyka na mecie!
                 pedzel.drawImage(obrazekZlotego, pikselX, pikselY, 24, 24);
 
             } else {
@@ -280,10 +275,10 @@ public class AplikacjaGUI extends Application {
             for (int y = 0; y < plansza.getWysokosc(); y++) {
                 Komorka k = plansza.getKomorka(x, y);
 
-                // 1. Sprawdzamy, czy w tej komórce w ogóle rośnie plankton
+                // 1. sprawdzanie, czy w tej komórce w ogóle rośnie plankton
                 if (k.getPlankton() != null) {
 
-                    // 2. Jeśli rośnie, sprawdzamy w jakim jest stanie!
+                    // 2. Jeśli rośnie, sprawdzanie w jakim jest stanie!
                     if (k.getPlankton().isCzyDostepny()) {
                         // Soczysty, gotowy do zjedzenia
                         pedzel.drawImage(obrazekPlanktonu, x * 6, y * 6, 12, 12);

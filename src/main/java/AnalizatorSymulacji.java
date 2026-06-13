@@ -18,7 +18,7 @@ public class AnalizatorSymulacji {
 
         this.ogolem = ryby.size();
 
-        // POPRAWIONE STRUMIENIE: Dodaliśmy jawne rzutowanie (Tunczyk r) w lambdzie,
+        //STRUMIENIE:
         // aby kompilator miał 100% pewności, że wywołuje metodę z klasy Tunczyk!
         this.wDrodze = ryby.stream().filter((Tunczyk r) -> r.getStatus().equals("W_DRODZE")).count();
         this.sukcesy = ryby.stream().filter((Tunczyk r) -> r.getStatus().equals("U_CELU")).count();
