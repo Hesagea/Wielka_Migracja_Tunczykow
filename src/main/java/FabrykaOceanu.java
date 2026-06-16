@@ -1,7 +1,15 @@
 import java.util.Random;
-
+/**
+ * Klasa narzędziowa odpowiedzialna za początkową konfigurację środowiska symulacji.
+ */
 public class FabrykaOceanu {
-
+    /**
+     * Inicjalizuje planszę, generuje plankton, rozmieszcza tuńczyki i ustawia globalny prąd morski.
+     * @param iloscTunczykow początkowa liczba tuńczyków w stadzie
+     * @param procentPlanktonu procentowe zagęszczenie planktonu na mapie
+     * @param xPrad wektor prądu morskiego w osi X
+     * @param yPrad wektor prądu morskiego w osi Y
+     */
     public static void stworzZycie(int iloscTunczykow, int procentPlanktonu, int xPrad, int yPrad) {
         Symulacja symulacja = Symulacja.getInstance();
         Plansza plansza = symulacja.getPlansza();

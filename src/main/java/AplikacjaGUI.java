@@ -15,7 +15,10 @@ import javafx.stage.Stage;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.util.Duration;
-
+/**
+ * Główna klasa interfejsu graficznego (GUI) oparta na frameworku JavaFX.
+ * Odpowiada za wyświetlanie okna symulacji, panelu sterowania oraz renderowanie elementów ekosystemu.
+ */
 public class AplikacjaGUI extends Application {
 
     // lista przechowująca współrzędne (X i Y) wizualnych kresek prądu
@@ -30,6 +33,11 @@ public class AplikacjaGUI extends Application {
 
     private AnalizatorSymulacji analizator = new AnalizatorSymulacji();
 
+    /**
+     * Inicjalizuje i uruchamia główną scenę aplikacji, definiuje układ interfejsu
+     * oraz uruchamia zegar symulacji (Timeline).
+     * @param glowneOkno główny kontener (okno) aplikacji dostarczony przez JavaFX
+     */
     @Override
     public void start(Stage glowneOkno) {
         BorderPane glownyUklad = new BorderPane();
