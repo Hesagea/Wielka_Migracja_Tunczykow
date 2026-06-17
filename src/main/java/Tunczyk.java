@@ -54,16 +54,16 @@ public class Tunczyk extends Agent {
         if (bezpiecznaKomorka.getPlankton() != null && bezpiecznaKomorka.getPlankton().isCzyDostepny()) {
             int energiaZJedzenia = bezpiecznaKomorka.getPlankton().pobierzZasoby();
             this.energia += energiaZJedzenia;
-            System.out.println("🐳 Tuńczyk nr " + id + " zjadł plankton! Energia wzrosła do: " + this.energia);
+            System.out.println("Tuńczyk nr " + id + " zjadł plankton! Energia wzrosła do: " + this.energia);
         }
 
         // AKTUALIZACJA STATUSU AGENTA
         if (this.energia <= 0) {
             this.status = "PADL";
-            System.out.println("❌ Tuńczyk nr " + id + " padł z głodu.");
+            System.out.println("Tuńczyk nr " + id + " padł z głodu.");
         } else if (bezpiecznaKomorka.getCzyTarlisko()) {
             this.status = "U_CELU";
-            System.out.println("🐟 SUKCES! Tuńczyk nr " + id + " dotarł do Tarliska!");
+            System.out.println("SUKCES! Tuńczyk nr " + id + " dotarł do Tarliska!");
         }
     }
 }
