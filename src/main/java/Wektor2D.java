@@ -1,3 +1,7 @@
+/**
+ * Klasa pomocnicza reprezentująca wektor w dwuwymiarowym układzie współrzędnych (X, Y).
+ * Używana do określania pozycji, wektora ruchu oraz siły prądów morskich.
+ */
 public class Wektor2D {
     // sumulacja pradu dla tunczykow
     private double dx;

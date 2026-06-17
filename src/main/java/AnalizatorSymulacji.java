@@ -1,5 +1,8 @@
 import java.util.List;
-
+/**
+ * Klasa analityczna zbierająca dane o populacji w czasie rzeczywistym.
+ * Zlicza ryby w drodze, te u celu oraz padłe, a także oblicza globalny wskaźnik przeżywalności.
+ */
 public class AnalizatorSymulacji {
 
     // Pola przechowujące najnowsze obliczenia dla silnika graficznego

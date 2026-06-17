@@ -1,3 +1,7 @@
+/**
+ * Klasa reprezentująca aktywnego agenta - tuńczyka.
+ * Odpowiada za poruszanie się, zużywanie energii, żerowanie oraz sprawdzanie stanu życia.
+ */
 public class Tunczyk extends Agent {
 
     // korzystamy z pola klasy Agent!

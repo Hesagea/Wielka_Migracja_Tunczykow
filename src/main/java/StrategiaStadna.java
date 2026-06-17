@@ -1,5 +1,8 @@
 import java.util.List;
-
+/**
+ * Implementacja interfejsu StrategiaRuchu oparta na algorytmie Boids.
+ * Symuluje zaawansowane zachowania stadne: dążenie do środka grupy, dopasowanie prędkości i unikanie kolizji z sąsiadami.
+ */
 public class StrategiaStadna implements StrategiaRuchu {
 
     @Override

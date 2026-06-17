@@ -1,5 +1,7 @@
-// klasa bazowa, abstrakcyjna
-
+/**
+ * Abstrakcyjna klasa bazowa reprezentująca każdy obiekt w symulacji.
+ * Definiuje wspólne cechy (np. pozycję) dla wszystkich uczestników ekosystemu.
+ */
 public abstract class Agent {
     protected int id;
     protected int x;

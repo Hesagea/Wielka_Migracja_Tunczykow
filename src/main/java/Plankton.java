@@ -1,3 +1,7 @@
+/**
+ * Klasa reprezentująca pasywnego agenta - plankton.
+ * Stanowi odnawialne źródło pożywienia dla tuńczyków i samodzielnie zarządza cyklem swojego odradzania.
+ */
 public class Plankton extends Agent {
     private int zasobnosc;
     private int czasOdnowy;

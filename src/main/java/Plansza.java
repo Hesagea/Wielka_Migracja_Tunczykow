@@ -1,3 +1,7 @@
+/**
+ * Klasa reprezentująca dwuwymiarową siatkę oceanu.
+ * Przechowuje stan wszystkich komórek i pozwala na zarządzanie pozycjami agentów w przestrzeni.
+ */
 public class Plansza {
 
     private static Plansza instance;

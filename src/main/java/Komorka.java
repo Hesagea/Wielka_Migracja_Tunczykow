@@ -1,5 +1,8 @@
 import java.util.ArrayList;
-
+/**
+ * Reprezentuje pojedyncze pole na planszy symulacji.
+ * Przechowuje informacje o tym, jaki obiekt (ryba, plankton) aktualnie się na nim znajduje.
+ */
 public class Komorka {
     private boolean czyTarlisko, czyTunczyk;
     private int x, y;

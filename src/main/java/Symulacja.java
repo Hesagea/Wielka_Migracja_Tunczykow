@@ -1,6 +1,9 @@
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * Główny silnik zarządzający pętlą czasową (wzorzec Singleton).
+ * Odpowiada za cykliczne wykonywanie kroków i odświeżanie logiki wszystkich agentów na planszy.
+ */
 public class Symulacja {
 
     private static Symulacja instance;
